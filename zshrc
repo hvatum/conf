@@ -20,6 +20,7 @@ compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
@@ -32,6 +33,9 @@ zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
+setopt completealiases
+setopt autopushd
+setopt interactivecomments
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
@@ -50,13 +54,14 @@ alias l='ls -CF'
 alias o='xdg-open'
 
 export PATH=$PATH:/home/hvatum/android/android-sdk-linux/platform-tools
+export CDPATH=$HOME/Unisoft:$HOME/Skole
 
 alias aptitude="sudo aptitude"
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
-alias openvpn="sudo openvpn"
-alias shutdown="sudo shutdown"
-alias poweroff="sudo poweroff"
+alias openvpn="sudo /usr/sbin/openvpn"
+alias shutdown="sudo /sbin/shutdown"
+alias poweroff="sudo /sbin/poweroff"
 
 [[ -f "/home/hvatum/.local/share/Steam/setup_debian_environment.sh" ]] && source "/home/hvatum/.local/share/Steam/setup_debian_environment.sh"
